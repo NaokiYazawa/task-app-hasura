@@ -15,7 +15,7 @@ jobs:
       - name: Apply hasura migrations
         uses: tibotiber/hasura-action@v3.0
         with:
-          args: migrate apply --all-databases
+          args: migrate apply --database-name default
         env:
           HASURA_ENDPOINT: ${{ secrets.HASURA_ENDPOINT }}
           HASURA_ADMIN_SECRET: ${{ secrets.HASURA_ADMIN_SECRET }}
