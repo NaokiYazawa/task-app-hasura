@@ -1,0 +1,31 @@
+name: "Deploy"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hasura:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Apply hasura migrations
+        uses: tibotiber/hasura-action@v3.0
+        with:
+          args: migrate apply --all-databases
+        env:
+          HASURA_ENDPOINT: ${{ secrets.HASURA_ENDPOINT }}
+          HASURA_ADMIN_SECRET: ${{ secrets.HASURA_ADMIN_SECRET }}
+          HASURA_ENGINE_VERSION: v2.37.0
+
+      - name: Apply hasura metadata
+        uses: tibotiber/hasura-action@v3.0
+        with:
+          args: metadata apply
+        env:
+          HASURA_ENDPOINT: ${{ secrets.HASURA_ENDPOINT }}
+          HASURA_ADMIN_SECRET: ${{ secrets.HASURA_ADMIN_SECRET }}
+          HASURA_ENGINE_VERSION: v2.37.0
