@@ -1,4 +1,4 @@
-name: "Deploy"
+name: "Apply migrations and metadata"
 
 on:
   push:
