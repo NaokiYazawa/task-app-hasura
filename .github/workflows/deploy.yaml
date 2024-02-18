@@ -15,7 +15,7 @@ jobs:
       - name: Delete hasura migrations
         uses: tibotiber/hasura-action@v3.0
         with:
-          args: migrate delete --database-name default
+          args: migrate delete --all --database-name default
         env:
           HASURA_ENDPOINT: ${{ secrets.HASURA_ENDPOINT }}
           HASURA_ADMIN_SECRET: ${{ secrets.HASURA_ADMIN_SECRET }}
