@@ -1,4 +1,4 @@
-name: "Apply migrations and metadata"
+name: "Apply hasura migration and metadata"
 
 on:
   push:
