@@ -24,6 +24,7 @@ select_permissions:
   - role: anonymous
     permission:
       columns:
+        - email
         - id
         - username
       filter: {}
